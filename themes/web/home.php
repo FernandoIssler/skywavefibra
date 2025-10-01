@@ -169,7 +169,7 @@
                             </h1>
                             <!--end::Title-->
                             <!--begin::Action-->
-                            <a href="#planos" class="btn btn-primary btn-lg">
+                            <a href="#pricing" class="btn btn-primary btn-lg">
                                 Conheça nossos Planos
                             </a>
                             <!--end::Action-->
