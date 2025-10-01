@@ -279,3 +279,349 @@ Se houver conflito, o moderador ajudará a corrigir antes do merge.
 -   Não esqueça do `.htaccess` no localhost.
     
 -   Use **mensagens claras nos commits**.
+
+
+
+
+
+
+- - - - - - - - -
+
+# 📌 Divisão de Componentes do Projeto SkyWave Fibra
+
+# 
+
+O sistema é dividido em **8 grandes módulos**, cada um responsável por uma área de negócio.  
+Cada módulo deve ter:
+
+-   **Model(s)** → representando as tabelas do banco.
+    
+-   **Controller(s)** → para receber rotas e processar a lógica.
+    
+-   **Views** → formulários, listagens, telas de visualização.
+    
+-   **Rotas** → GET para páginas e POST para salvar/editar.
+    
+
+* * *
+
+## 🔧 1. Equipamentos
+
+# 
+
+**Objetivo:** Gerenciar os equipamentos do provedor (ONU, roteadores, rádios, switches, etc.).
+
+### Responsabilidades:
+
+# 
+
+-   Cadastrar equipamentos.
+    
+-   Listar equipamentos cadastrados.
+    
+-   Editar/atualizar status do equipamento (disponível, alocado, manutenção, descartado).
+    
+-   Relacionar equipamentos a clientes.
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `equipment` (principal)
+    
+-   `customer_equipment` (relacionamento com clientes)
+    
+
+### Models:
+
+# 
+
+-   `Equipment.php`
+    
+-   `CustomerEquipment.php`
+    
+
+* * *
+
+## 👤 2. Pessoas
+
+# 
+
+**Objetivo:** Centralizar informações de pessoas físicas e jurídicas.
+
+### Responsabilidades:
+
+# 
+
+-   Cadastrar dados de uma pessoa (nome, CPF/CNPJ, tipo de pessoa).
+    
+-   Vincular endereços (`person_address`).
+    
+-   Gerenciar contatos (`contact`).
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `person` (principal)
+    
+-   `address`
+    
+-   `person_address` (relacionamento pessoa ↔ endereço)
+    
+-   `contact`
+    
+
+### Models:
+
+# 
+
+-   `Person.php`
+    
+-   `Address.php`
+    
+-   `PersonAddress.php`
+    
+-   `Contact.php`
+    
+
+* * *
+
+## 🧑‍💼 3. Clientes
+
+# 
+
+**Objetivo:** Representar as pessoas que são clientes do provedor.
+
+### Responsabilidades:
+
+# 
+
+-   Transformar uma `person` em `customer`.
+    
+-   Ativar/suspender/cancelar clientes.
+    
+-   Vincular cliente a contratos.
+    
+-   Acessar dados de login (conta).
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `customer` (principal)
+    
+-   `account` (login/senha/status)
+    
+
+### Models:
+
+# 
+
+-   `Customer.php`
+    
+-   `Account.php`
+    
+
+* * *
+
+## 👨‍🔧 4. Funcionários
+
+# 
+
+**Objetivo:** Representar os colaboradores internos.
+
+### Responsabilidades:
+
+# 
+
+-   Transformar uma `person` em `employee`.
+    
+-   Definir cargo (admin, suporte, técnico, financeiro).
+    
+-   Controlar status (ativo/inativo).
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `employee` (principal)
+    
+
+### Models:
+
+# 
+
+-   `Employee.php`
+    
+
+* * *
+
+## 📄 5. Contratos
+
+# 
+
+**Objetivo:** Gerenciar a relação entre clientes e os planos contratados.
+
+### Responsabilidades:
+
+# 
+
+-   Criar contratos entre cliente e plano.
+    
+-   Definir início e fim.
+    
+-   Controlar status do contrato (ativo, suspenso, cancelado).
+    
+-   Relacionar com faturas.
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `contract` (principal)
+    
+-   Relacionamentos:
+    
+    -   `customer`
+        
+    -   `plan`
+        
+    -   `invoice`
+        
+
+### Models:
+
+# 
+
+-   `Contract.php`
+    
+
+* * *
+
+## 💳 6. Planos
+
+# 
+
+**Objetivo:** Definir e gerenciar os pacotes de internet oferecidos pelo provedor.
+
+### Responsabilidades:
+
+# 
+
+-   Cadastrar planos (nome, velocidade de download/upload, franquia, preço).
+    
+-   Alterar preço ou configuração.
+    
+-   Exibir lista de planos disponíveis.
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `plan`
+    
+
+### Models:
+
+# 
+
+-   `Plan.php`
+    
+
+* * *
+
+## 🎫 7. Suporte (Tickets)
+
+# 
+
+**Objetivo:** Controlar chamados de clientes.
+
+### Responsabilidades:
+
+# 
+
+-   Abrir chamado com categoria (instalação, manutenção, cobrança, cancelamento, técnico).
+    
+-   Definir prioridade (baixa, média, alta, crítica).
+    
+-   Alterar status (em aberto, em andamento, resolvido, cancelado).
+    
+-   Registrar quem atendeu.
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `support_ticket`
+    
+
+### Models:
+
+# 
+
+-   `SupportTicket.php`
+    
+
+* * *
+
+## 💰 8. Pagamentos
+
+# 
+
+**Objetivo:** Controlar faturas e pagamentos dos clientes.
+
+### Responsabilidades:
+
+# 
+
+-   Gerar faturas para contratos.
+    
+-   Marcar faturas como pagas/pendentes/atrasadas.
+    
+-   Registrar pagamentos com método (PIX, cartão, boleto, débito automático).
+    
+-   Controlar histórico de transações.
+    
+
+### Tabelas envolvidas:
+
+# 
+
+-   `invoice` (faturas)
+    
+-   `payment` (pagamentos)
+    
+
+### Models:
+
+# 
+
+-   `Invoice.php`
+    
+-   `Payment.php`
+    
+
+* * *
+
+# 🗂️ Estrutura de Responsabilidade
+
+# 
+
+| Módulo | Tabelas principais | O que faz |
+| --- | --- | --- |
+| **Equipamentos** | `equipment`, `customer_equipment` | Gerencia equipamentos e vincula a clientes |
+| **Pessoas** | `person`, `address`, `contact` | Cadastro geral de pessoas, endereços e contatos |
+| **Clientes** | `customer`, `account` | Representa pessoas como clientes e controla login/status |
+| **Funcionários** | `employee` | Representa pessoas como funcionários e define cargos |
+| **Contratos** | `contract` | Liga clientes aos planos, controla vigência e status |
+| **Planos** | `plan` | Define pacotes de internet |
+| **Suporte** | `support_ticket` | Gerencia chamados de clientes |
+| **Pagamentos** | `invoice`, `payment` | Controla faturas, status e registros de pagamentos |
