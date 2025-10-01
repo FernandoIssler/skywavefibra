@@ -9,7 +9,7 @@ const CONF_DB_TEST = ["host" => "localhost", "user" => "root", "pass" => "", "da
 /**
  * PROJECT URLs
  */
-const CONF_URL_BASE = "https://skywavefibre.com.br/";
+const CONF_URL_BASE = "https://skywavefibra.com.br";
 const CONF_URL_TEST = "http://www.localhost/skywavefibra";
 
 /**
