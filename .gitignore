@@ -1,0 +1,20 @@
+# Composer dependencies
+/vendor/
+/composer.lock
+
+# Composer PHAR
+/composer.phar
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Custom ignore
+.htaccess
+/storage/
