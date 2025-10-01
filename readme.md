@@ -76,7 +76,7 @@ O projeto **só funciona com URLs amigáveis** se o arquivo `.htaccess` estiver 
 
 1.  **Clonar o repositório do GitHub**
     
-    `git clone https://github.com/<seu-usuario>/<seu-repo>.git cd <seu-repo>`
+    `git clone https://github.com/FernandoIssler/skywavefibra.git cd <seu-repo>`
     
 2.  **Instalar dependências**
     
@@ -90,7 +90,7 @@ O projeto **só funciona com URLs amigáveis** se o arquivo `.htaccess` estiver 
         
 4.  **Configurar credenciais**
     
-    -   No arquivo `source/Boot/Config.php`, coloque os dados do banco (usuário, senha, host).
+    -   No arquivo `source/Boot/Config.php`, cestão todas as credenciais habituais, o banco de dados local está com o usuário root e sem senha por padrão.
         
 
 * * *
@@ -201,11 +201,11 @@ O banco tem tabelas como:
 ## 💡 10. JavaScript
 
 O arquivo `custom.js` controla alertas, formulários AJAX e mensagens.  
-⚠️ **Importante:** esse arquivo não deve ser alterado pelos iniciantes.
+⚠️ **Importante:** esse arquivo não deve ser alterado.
 
 * * *
 
-## 📦 11. Usando o Composer no Dia a Dia
+## 📦 11. Usando o Composer no Dia a Dia (Se precisar instalar uma nova dependência me avise com antecedência)
 
 -   Para instalar novas libs:
     
@@ -257,13 +257,13 @@ Se houver conflito, o moderador ajudará a corrigir antes do merge.
 
 ## ✅ 13. Checklist para Criar Novo Módulo
 
-1.  Criar tabela no banco.
+1.  Criar tabela no banco (Falar com o pesoal do BD se for necessário).
     
 2.  Criar **Model** correspondente.
     
 3.  Criar **rota** no `index.php`.
     
-4.  Criar **método** no controller.
+4.  Criar **método** no controller principal (App.php).
     
 5.  Criar **view** na pasta certa.
     
@@ -273,10 +273,8 @@ Se houver conflito, o moderador ajudará a corrigir antes do merge.
 * * *
 
 ## 🆘 14. Dicas
-
--   Sempre rode `composer dump-autoload -o` depois de criar novas classes.
     
--   Não altere arquivos do `vendor/`.
+-   Não altere arquivos da pasta `vendor/`.
     
 -   Não esqueça do `.htaccess` no localhost.
     
